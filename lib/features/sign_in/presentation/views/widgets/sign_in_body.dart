@@ -16,9 +16,30 @@ class SignInBody extends StatelessWidget {
     return BlocConsumer<SignInCubit, SignInState>(
 
       builder: (context, state) {
-        return ElevatedButton(onPressed: () async {
-          await BlocProvider.of<SignInCubit>(context).signInUser();
-        }, child: const Text("sign In"));
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.network('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTuTxJhRf3zVJkcSXFAwp7_DQWabIK1RM7gDh5xRwa4A&s'),
+            Padding(
+              padding: const EdgeInsets.all(30.0),
+              child: ElevatedButton(
+
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.green,
+
+                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    elevation: 5,
+                  ),
+                  onPressed: () async {
+                await BlocProvider.of<SignInCubit>(context).signInUser();
+              }, child: const Text("sign In",style: TextStyle(color: Colors.white,fontSize: 15),)),
+            ),
+          ],
+        );
       },
       listener: (BuildContext context, SignInState state) {
 
@@ -27,11 +48,14 @@ class SignInBody extends StatelessWidget {
 
         }
         else if(state is SignSuccess){
-          Navigator.push(
+
+          Navigator.pushReplacement(
             context,
-            MaterialPageRoute(builder: (context) =>  const WishListView()),
+            MaterialPageRoute(builder: (context) =>   WishListView()),
           );
-        }
+          showSnackBar(context, 'Done sign In ');
+
+       }
       },
     );
   }

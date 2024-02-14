@@ -23,7 +23,13 @@ class WishListViewBlocBuilder extends StatelessWidget {
           return Center(
             child: Text(state.errorMassage),
           );
-        } else {
+        }
+        else if (state is WishListFailureNetwork) {
+          return const Center(
+            child: Text("Please check internet"),
+          );
+        }
+        else {
           return const Center(
             child: CircularProgressIndicator(),
           );

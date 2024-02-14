@@ -4,6 +4,7 @@ part of 'wish_list_cubit.dart';
 abstract class WishListState {}
 
 class WishListInitial extends WishListState {}
+class WishListFailureNetwork extends WishListState {}
 class WishListLoading extends WishListState {}
 class WishListSuccess extends WishListState {
 final Stream <List<WishListEntry> > wishListEntry;

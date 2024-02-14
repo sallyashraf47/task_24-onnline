@@ -12,6 +12,7 @@ class WishListRepoImpl implements WishListRepo {
 
   @override
   Future<void> addWish(String text) async {
+
     await remoteWishDataSource.addWish(text);
   }
 

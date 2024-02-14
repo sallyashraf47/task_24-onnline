@@ -1,8 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:task_firebase/features/sign_in/presentation/manger/sign_in_cubit.dart';
 import 'package:task_firebase/features/sign_in/presentation/views/sign_in_view.dart';
+import 'package:task_firebase/features/wish_list/presentation/views/wish_list_view.dart';
 import 'features/wish_list/data/data_sorse/remote_data_sourse.dart';
 import 'features/wish_list/data/repo_impl/wish_list_repo_impl.dart';
 import 'features/wish_list/presentation/manger/wish_list/wish_list_cubit.dart';
@@ -28,10 +30,14 @@ class MyApp extends StatelessWidget {
           BlocProvider(create: (context) => WishListCubit(wishListRepo: WishListRepoImpl(remoteWishDataSource: RemoteWishDataSource()))..fetchWishList(),),
 
         ],child:
-    const MaterialApp(
+     MaterialApp(
+       debugShowCheckedModeBanner: false,
+theme: ThemeData(scaffoldBackgroundColor: Color(0xfff0f0f1),
+appBarTheme: const AppBarTheme(color:Color(0xfff0f0f1) )),
 
-
-      home: SignInView(),
+      home:
+      FirebaseAuth.instance.currentUser!=null?
+       WishListView():SignInView(),
     ));
   }
 }
