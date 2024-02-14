@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:task_firebase/features/wish_list/presentation/views/widgets/wish_list.dart';
-
+import 'package:task_firebase/features/wish_list/presentation/views/widgets/wish_list_bloc_builder.dart';
 import '../manger/wish_list/wish_list_cubit.dart';
-
-
-
-
 class WishListView extends StatelessWidget {
   const WishListView({super.key});
 
@@ -18,7 +13,7 @@ class WishListView extends StatelessWidget {
           title: const Text('Wish List'),
         ),
 
-        body:  WishList(),
+        body:  const WishListViewBlocBuilder(),
         floatingActionButton: FloatingActionButton(
           onPressed: () async {
             String text = await

@@ -21,10 +21,8 @@ class SignInBody extends StatelessWidget {
         }, child: const Text("sign In"));
       },
       listener: (BuildContext context, SignInState state) {
-        if(state is SignInLoading){
 
-        }
-        else if(state is SignFailure){
+       if(state is SignFailure){
           showSnackBar(context, state.errorMassage);
 
         }

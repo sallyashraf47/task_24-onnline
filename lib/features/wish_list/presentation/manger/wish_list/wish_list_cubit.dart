@@ -12,6 +12,7 @@ class WishListCubit extends Cubit<WishListState> {
   WishListCubit({required this.wishListRepo}) : super(WishListInitial());
   final WishListRepo wishListRepo;
   fetchWishList(){
+    emit(WishListLoading());
    var wishList= wishListRepo.fetchWishList();
   emit(WishListSuccess(wishList));
 

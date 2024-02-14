@@ -10,4 +10,8 @@ final Stream <List<WishListEntry> > wishListEntry;
 
   WishListSuccess(this.wishListEntry);
 }
-class WishListFailure extends WishListState {}
+class WishListFailure extends WishListState {
+  final String errorMassage;
+
+  WishListFailure(this.errorMassage);
+}
